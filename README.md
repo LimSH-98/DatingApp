@@ -1,3 +1,3 @@
 # DatingApp
-Lim Seung Hyuk
-2023-08-11 inflearn dating app start. 
+Lim Seung Hyuk <br>
+2023-08-11 inflearn dating app start. <br>
