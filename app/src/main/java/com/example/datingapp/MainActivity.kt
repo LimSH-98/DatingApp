@@ -7,8 +7,14 @@ import android.util.Log
 import android.view.View
 import android.widget.ImageView
 import com.example.datingapp.auth.IntroActivity
+import com.example.datingapp.auth.UserDataModel
 import com.example.datingapp.slider.CardStackAdapter
+import com.example.datingapp.utils.FirebaseRef
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.ValueEventListener
+import com.google.firebase.database.ktx.getValue
 import com.google.firebase.ktx.Firebase
 import com.yuyakaido.android.cardstackview.CardStackLayoutManager
 import com.yuyakaido.android.cardstackview.CardStackListener
@@ -19,6 +25,8 @@ class MainActivity : AppCompatActivity() {
 
     lateinit var cardStackAdapter: CardStackAdapter
     lateinit var manager: CardStackLayoutManager
+
+    private val usersDataList = mutableListOf<UserDataModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -59,14 +67,34 @@ class MainActivity : AppCompatActivity() {
 
             }
         })
-
-        val testList = mutableListOf<String>()
-        testList.add("a")
-        testList.add("b")
-        testList.add("c")
-
-        cardStackAdapter = CardStackAdapter(baseContext, testList)
+        cardStackAdapter = CardStackAdapter(baseContext, usersDataList)
         cardStackView.layoutManager = manager
         cardStackView.adapter = cardStackAdapter
+
+        getUserDataList()
+    }
+
+    private fun getUserDataList(){
+
+        val postListener = object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+
+                // var post = dataSnapshot.getValue<>()
+
+                for(dataModel in dataSnapshot.children){
+                    var user = dataModel.getValue(UserDataModel::class.java)
+                    usersDataList.add(user!!)
+                }
+
+                cardStackAdapter.notifyDataSetChanged()
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                TODO("Not yet implemented")
+            }
+
+
+        }
+        FirebaseRef.userInfoRef.addValueEventListener(postListener)
     }
 }
