@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "506110294",
-    "project_id": "datingapp-33c41",
-    "storage_bucket": "datingapp-33c41.appspot.com"
+    "project_number": "154455793248",
+    "project_id": "dating-8b961",
+    "storage_bucket": "dating-8b961.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:506110294:android:ed03d3a4d44fa5404976f7",
+        "mobilesdk_app_id": "1:154455793248:android:6f3505d260e52a2c55ed05",
         "android_client_info": {
-          "package_name": "com.example.datingapp.auth"
+          "package_name": "com.example.datingapp"
         }
       },
       "oauth_client": [
         {
-          "client_id": "506110294-u43te1pi1146v5am1cb6hocq9mge9kjg.apps.googleusercontent.com",
+          "client_id": "154455793248-fc3lkui3pd3jdqdh2ohd4p5siaa6vbhc.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDMq05d6Ws5w1kHrGTT3iu_o5JKJuKqN3g"
+          "current_key": "AIzaSyCURU4GBtJYdaObd0LovS6HawTMqpKsMi8"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "506110294-u43te1pi1146v5am1cb6hocq9mge9kjg.apps.googleusercontent.com",
+              "client_id": "154455793248-fc3lkui3pd3jdqdh2ohd4p5siaa6vbhc.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
