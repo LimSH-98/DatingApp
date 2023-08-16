@@ -41,6 +41,7 @@ android {
 }
 
 dependencies {
+    implementation("com.google.firebase:firebase-messaging-ktx")
     implementation("com.github.bumptech.glide:glide:4.15.1")
     implementation("com.google.firebase:firebase-storage-ktx")
     implementation("com.google.firebase:firebase-database-ktx")
