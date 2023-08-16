@@ -15,9 +15,17 @@
         android:layout_height="wrap_content"/>
 
     <Button
+        android:id="@+id/myListListBtn"
+        android:text="My Matching List"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <Button
         android:id="@+id/logOutBtn"
         android:text="LOGOUT"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
+
+
 
 </LinearLayout>
