@@ -8,6 +8,7 @@ import android.view.View
 import android.widget.ImageView
 import com.example.datingapp.auth.IntroActivity
 import com.example.datingapp.auth.UserDataModel
+import com.example.datingapp.setting.SettingActivity
 import com.example.datingapp.slider.CardStackAdapter
 import com.example.datingapp.utils.FirebaseRef
 import com.google.firebase.auth.ktx.auth
@@ -34,9 +35,11 @@ class MainActivity : AppCompatActivity() {
 
         val setting = findViewById<ImageView>(R.id.settingIcon)
         setting.setOnClickListener {
-            val auth = Firebase.auth
-            auth.signOut()
-            val intent = Intent(this, IntroActivity::class.java)
+//            val auth = Firebase.auth
+//            auth.signOut()
+//            val intent = Intent(this, IntroActivity::class.java)
+//            startActivity(intent)
+            val intent = Intent(this, SettingActivity::class.java)
             startActivity(intent)
         }
 
@@ -79,14 +82,12 @@ class MainActivity : AppCompatActivity() {
         val postListener = object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
 
-                // var post = dataSnapshot.getValue<>()
-
                 for(dataModel in dataSnapshot.children){
                     var user = dataModel.getValue(UserDataModel::class.java)
                     usersDataList.add(user!!)
                 }
 
-                cardStackAdapter.notifyDataSetChanged()
+                cardStackAdapter.notifyDataSetChanged() // Adapter 동기화시키는 함수.
             }
 
             override fun onCancelled(error: DatabaseError) {
