@@ -20,6 +20,7 @@ import com.example.datingapp.setting.SettingActivity
 import com.example.datingapp.slider.CardStackAdapter
 import com.example.datingapp.utils.FirebaseAuthUtils
 import com.example.datingapp.utils.FirebaseRef
+import com.example.datingapp.utils.MyInfo
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -116,6 +117,8 @@ class MainActivity : AppCompatActivity() {
                 Log.d(TAG, data?.gender.toString())
 
                 currentUserGender = data?.gender.toString()
+
+                MyInfo.myNickname = data?.nickname.toString()
 
                 getUserDataList(currentUserGender)
             }
