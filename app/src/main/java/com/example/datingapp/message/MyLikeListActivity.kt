@@ -7,11 +7,18 @@ import android.widget.ListView
 import android.widget.Toast
 import com.example.datingapp.R
 import com.example.datingapp.auth.UserDataModel
+import com.example.datingapp.message.fcm.NotiModel
+import com.example.datingapp.message.fcm.PushNotification
+import com.example.datingapp.message.fcm.RetrofitInstance
 import com.example.datingapp.utils.FirebaseAuthUtils
 import com.example.datingapp.utils.FirebaseRef
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import okhttp3.Dispatcher
 
 class MyLikeListActivity : AppCompatActivity() {
 
@@ -41,6 +48,12 @@ class MyLikeListActivity : AppCompatActivity() {
 
             Log.d(TAG, likeUserList[position].uid.toString())
             checkMatching(likeUserList[position].uid.toString())
+
+            val notiModel = NotiModel("a", "b")
+
+            val pushModel = PushNotification(notiModel, likeUserList[position].token.toString())
+
+            testPush(pushModel)
         }
     }
 
@@ -110,5 +123,9 @@ class MyLikeListActivity : AppCompatActivity() {
 
         }
         FirebaseRef.userInfoRef.addValueEventListener(postListener)
+    }
+
+    private fun testPush(notification: PushNotification) = CoroutineScope(Dispatchers.IO).launch{
+        RetrofitInstance.api.postNotification(notification)
     }
 }
